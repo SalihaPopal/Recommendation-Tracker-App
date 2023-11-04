@@ -3,12 +3,20 @@
 
 
 Pin the Mood
+
+
 Business problem
+
+
 People recommend things (books, TV shows, music, etc). Sometimes we don't get around to trying them out for a while. We want a website to track those recommendations, and to help us pick things when we're in the right mood for them.
+
+
 
 User roles
 We will make a single-user website, with exactly one expected user:
 Collector - someone who receives recommendations, and wants to log and track them.
+
+
 
 User stories
 As a collector, I can save a recommendation, including at least the following information:
@@ -23,11 +31,15 @@ Who made the recommendation
 The medium of the recommendation
 The mood of the recommendation
 
+
+
 Stretch User Stories
 Ability to add custom recommendation media (e.g. if someone recommends an "immersive theatre" event, that can be entered as a new medium when saving)
 Ability to add extra moods
 Ability to rate recommendations
 Analytics about who makes the best recommendations
+
+
 
 Table stakes
 Unrelated to any one user story, the following requirements must always be met:
@@ -36,6 +48,8 @@ The website must be fully accessible.
 If an error occurs, it must be obvious to the user that something has gone wrong, and what they should do about it.
 Any data must be persisted - re-deploying or re-starting the server must not lose any data.
 Suggested implementation plan
+
+
 
 High Level
 Talk through what functionality should live where.
@@ -49,9 +63,15 @@ Choose some user stories to focus on first, and:
 Write backend features which you can test out with curl/postman.
 Add frontend features to visualise the data from the backend and interact with it.
 Deploy everything.
+
+
 Iterate.
 
+
+
 Day by day
+
+
 
 Day 1 - Day 2 : Planning phase (no coding if you can resist) - 
 Might seem long and an overkill but will benefit you at next steps. Key steps to complete (you pick the order):
@@ -61,15 +81,31 @@ Identify different pages / views required for the selected feature. Design Wiref
 Identify the API endpoints the feature would require.
 If time left complete the basic setup - setup a react app, express server & connect them with each other. Note - You can test with a simple endpoint if the frontend and backend are connected.
 
+
+
 Day 3 - Day 4 - It's a choice you can start from the front end / back end.
+
+
+
 Backend
+
+
+
 Create DB and tables.
+
+
+
 Basic app structure, setup of the express routes, skeleton only. Just routes with simple console.logs.
 Implement the full logic of the route including db calls - test with PostMan/curl.
 Implement the front end that calls these api endpoints /  routes.
 Go back to step 2 of this section & iterate.
 
+
+
 Frontend
+
+
+
 Implement the front-end view.
 Use dummy data to style it.
 Once happy with the layout, implement backend endpoints and replace dummy data with fetch statements.
