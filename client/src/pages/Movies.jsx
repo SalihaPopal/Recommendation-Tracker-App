@@ -36,6 +36,7 @@ export default function Movies({ onHandleItemClick }) {
 
   return (
     <div>
+      <h1 className='h1'>Recommended Movies</h1>
 <Moods 
   moods={moods} 
   setMoods={setMoods} 
@@ -43,7 +44,6 @@ export default function Movies({ onHandleItemClick }) {
   setSelectedMoods={setSelectedMoods} 
 />
 
-      <h1>Recommended Movies</h1>
       <div className='main'>
       {movies.map((movie) => (
         <MovieCard key={movie.id} movie={movie} />
