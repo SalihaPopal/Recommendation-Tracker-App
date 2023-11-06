@@ -114,7 +114,7 @@ app.get('/recommendations', async (req, res) => {
   }
 });
 
-
+// Define a route to retrieve recommendations by movie
 app.get('/recommendations/movies', async (req, res) => {
   // const medium = req.query.medium;
   try {
