@@ -15,13 +15,14 @@ INSERT INTO media(medium_type)
 DROP TABLE IF EXISTS recommendations CASCADE;    
 
 CREATE TABLE recommendations (
-    recommendation_id SERIAL PRIMARY KEY,
+    rec_id SERIAL PRIMARY KEY,
     user_id INT REFERENCES users(user_id),
     recommender VARCHAR(255) NOT NULL,
     title VARCHAR(255) NOT NULL,
     medium VARCHAR(255) NOT NULL,
-    medium_url VARCHAR(255) NOT NULL
+    medium_url VARCHAR(255) NOT NULL,
 );
+
 
 INSERT INTO recommendations (user_id, recommender, title, medium, medium_url)
 VALUES
@@ -48,6 +49,44 @@ VALUES
 
 
     select * from recommendations;  
+
+
+    create table recommendation_moods (
+      rec_mood_id SERIAL PRIMARY KEY,
+      rec_id INT REFERENCES recommendations(rec_id),
+      mood_id INT REFERENCES moods(mood_id)
+    );
+
+
+    INSERT INTO recommendation_moods (rec_id, mood_id)
+VALUES
+    ('1', '9'),
+    ('1', '10'),
+    ('2', '10'),
+    ('2', '3'),
+    ('3', '4'),
+    ('3', '7'),
+    ('3', '11'),
+    ('4', '12'),
+    ('4', '15'),
+    ('4', '2'),
+    ('5', '13'),
+    ('6', '1'),
+    ('7', '14'),
+    ('8', '6'),
+    ('9', '12'),
+    ('10', '8'),
+    ('11', '1'),
+    ('11', '12'),
+    ('12', '13'),
+    ('13', '6'),
+    ('14', '5'),
+    ('15', '17'),
+    ('16', '20'),
+    ('17', '13'),
+    ('18', '19'),
+    ('19', '18'),
+    ('20', '17');
 
 
 DROP TABLE IF EXISTS users CASCADE; 
@@ -86,42 +125,31 @@ DROP TABLE IF EXISTS moods CASCADE;
 
 CREATE TABLE moods (
     mood_id SERIAL PRIMARY KEY,
-    recommendation_id INT REFERENCES recommendations(recommendation_id),
-    mood VARCHAR(255) NOT NULL
+    mood_name VARCHAR(50) NOT NULL
 );
 
-INSERT INTO moods (recommendation_id, mood)
+INSERT INTO moods (mood_name)
 VALUES 
-    (1, 'Magical'),
-    (1, 'Animated'),
-    (2, 'adventure'), 
-    (2, 'comedy drama'), 
-    (3, 'adventure'), 
-    (3, 'action drama'), 
-    (3, 'romantic'), 
-    (4, 'horror'),
-    (4, 'mystery'),
-    (4, 'thriller drama'), 
-    (5, 'comedy'),
-    (6, 'science fiction'),  
-    (7, 'Drama'), 
-    (8, 'thoughtful'),
-    (9, 'horror drama'), 
-    (9, 'mystery'),  
-    (10, 'prophecy'), 
-    (11, 'horror'), 
-    (12, 'comedy'), 
-    (13, 'drama'), 
-    (14, 'Scince Fiction'), 
-    (14, 'Adventure'),
-    (14, 'Mystery'),
-    (14, 'Action'),
-    (15, 'nasheed'),  
-    (16, 'sad'), 
-    (17, 'comedy'), 
-    (18, 'party'), 
-    (19, 'romantic'),
-    (20, 'nasheed');
+    ('Science Fiction'),
+    ('Thriller drama'),
+    ('Comedy drama'),  
+    ('Action drama'),
+    ('Horror drama'),
+    ('Thoughtful'),
+    ('Adventure'),
+    ('Prophecy'), 
+    ('Magical'),
+    ('Animated'),  
+    ('Romantic'), 
+    ('Horror'), 
+    ('Comedy'), 
+    ('Drama'), 
+    ('Mystery'),
+    ('Action'),
+    ('Nasheed'),   
+    ('Romantic'), 
+    ('Party'),
+    ('Sad');
 
     select * from moods;
 
