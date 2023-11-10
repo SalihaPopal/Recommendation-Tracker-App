@@ -140,6 +140,40 @@ app.get('/moods/movie', async (req, res) => {
     JOIN recommendations r ON rm.rec_id = r.rec_id
     WHERE r.medium = 'Movie';
     
+<<<<<<< HEAD
+=======
+    const { rows } = await db.query(query);
+    res.json(rows);
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ error: 'An error occurred.' });
+  }
+});
+
+// Define a route to retrieve recommendations by movie
+app.get('/recommendations/movies', async (req, res) => {
+  // const medium = req.query.medium;
+  try {
+    const query = `
+    SELECT
+    r.recommendation_id,
+    r.user_id,
+    r.recommender,
+    r.title,
+    r.medium,
+    r.medium_url,
+    STRING_AGG(DISTINCT m.mood_id::TEXT, ', ') AS moods_id,
+    STRING_AGG(DISTINCT m.mood::TEXT, ', ') AS moods
+FROM
+    recommendations r
+JOIN
+    moods m ON r.recommendation_id = m.recommendation_id
+WHERE
+    r.medium = 'Movie'
+GROUP BY
+    r.recommendation_id, r.user_id, r.recommender, r.title, r.medium, r.medium_url;
+
+>>>>>>> dcbb27fea7cc6d8c014ecb817f5a03a318a2c8a1
     `;
 
     const { rows } = await db.query(query);
