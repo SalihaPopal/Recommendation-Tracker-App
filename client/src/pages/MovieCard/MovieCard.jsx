@@ -5,8 +5,6 @@ export default function MovieCard({movie}) {
 
   console.log('Medium URL:', movie.medium_url);
 
-  // const { title, mood, recommender} = movie 
-
   return (
     <div className='card-container'>
       <div className='cord-img-container'>
